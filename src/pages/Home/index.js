@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Button} from '../../components';
+import {WebView} from 'react-native-webview';
 
 const Home = ({navigation}) => {
   return (

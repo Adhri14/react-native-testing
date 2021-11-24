@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {StyleSheet, Text, View, ScrollView} from 'react-native';
 import {TextInput, Button} from '../../components';
+import {getData} from '../../utils';
 
 const Login = ({navigation}) => {
   return (

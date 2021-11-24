@@ -1,7 +1,8 @@
 import axios from 'axios';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View, ScrollView} from 'react-native';
 import {TextInput, Button} from '../../components';
+import {setData} from '../../utils';
 
 const SignUp = ({navigation}) => {
   const [form, setForm] = useState({
@@ -21,6 +22,15 @@ const SignUp = ({navigation}) => {
       .post('http://foodmarket-backend.buildwithangga.id/api/register', form)
       .then(res => {
         console.log(res.data.data);
+        navigation.reset({
+          index: 1,
+          routes: [{name: 'Home'}],
+        });
+        // res.data.data.token_type + ' ' + res.data.data.access_token
+        setData('token', {
+          value: `${res.data.data.token_type} ${res.data.data.access_token}`,
+        }); // Bearer Token
+        setData('userProfile', {user: res.data.data.user});
       })
       .catch(err => {
         console.log(err.message);
